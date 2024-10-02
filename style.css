@@ -1,0 +1,50 @@
+p , h1, h2, h3, h4, h5, h6, legend, label, select, button, i {
+    color: #231f20;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}
+h2 {
+    font-size: 1.5rem;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #cf462a
+}
+
+select{
+    background-color: white;
+}
+
+body{
+    background-color: #e9e9e9;
+    max-width: 32rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a{
+    color: #cf462a;
+}
+
+i{
+    color: #555;
+}
+
+label, select, button{
+    padding: 0.4rem;
+    margin: 0.3rem;
+}
+
+button{
+    background-color: #cf462a;
+    color: white;
+    border: none;
+}
+
+button:hover{
+    background-color: #af3923;
+}
+button:active{
+    background-color: #882d1c;
+}
