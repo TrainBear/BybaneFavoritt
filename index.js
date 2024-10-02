@@ -97,6 +97,9 @@ function handleSubmit() {
     let s = "Du vil like nummer <strong>" + sets[0].id + "</strong>, <strong>" + sets[1].id + "</strong> og kanskje <strong>" + sets[2].id + "</strong>";
     document.getElementById('result').innerHTML = s;
     document.getElementById('hidden').hidden = false;
+
+    const audio = new Audio('bell.mp3');
+    audio.play();
 }
 
 let random;
