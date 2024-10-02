@@ -20,7 +20,8 @@ function handleSubmit() {
     const nextStop = document.getElementById('next-stop').value;
     const joint = document.getElementById('joint').value;
     const expanded = document.getElementById('expanded').value;
-    if([light, line, nextStop, joint, expanded].some(s=>s==="-1")){
+    const toby = document.getElementById('toby').value;
+    if([light, line, nextStop, joint, expanded, toby].some(s=>s==="-1")){
         alert("Du må fylle ut alle felta!");
         return;
     }
@@ -87,6 +88,10 @@ function handleSubmit() {
         })
     }
 
+    // Toby
+    if(toby !== "-1"){
+        sets[207-201].score += toby === "0" ? 1 : 0;
+    }
 
     sets.sort((a, b) => b.score - a.score);
     let s = "Du vil like nummer <strong>" + sets[0].id + "</strong>, <strong>" + sets[1].id + "</strong> og kanskje <strong>" + sets[2].id + "</strong>";
