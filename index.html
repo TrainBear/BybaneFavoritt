@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="index.js" defer></script>
     <title>Bybane Favoritt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -14,46 +15,49 @@
         <fieldset>
             <Legend>Vel favoritt eigenskapar</Legend>
             <label>Farge på lys
-                <select>
-                    <option>[Vel]</option>
-                    <option>Varm</option>
-                    <option>Kald</option>
+                <select id="light">
+                    <option value="-1">-</option>
+                    <option value="0">Varm</option>
+                    <option value="1">Kald</option>
                 </select>
             </label>
             <br>
             <label>Linjenummer utsjånad
-                <select>
-                    <option>[Vel]</option>
-                    <option>Liten</option>
-                    <option>Stor</option>
-                    <option>Stor og tett</option>
+                <select id="line">
+                    <option value="-1">-</option>
+                    <option value="0">Liten</option>
+                    <option value="1">Stor</option>
+                    <option value="2">Stor og tett</option>
                 </select>
             </label>
             <br>
             <label>Innside tavler
-            <select>
-                <option>[Vel]</option>
-                <option>aukeland sjukehusH</option>
-                <option>Haukeland sjukehus</option>
-                <option>Haukeland sjukehus med god plass</option>
+            <select id="next-stop">
+                <option value="-1">-</option>
+                <option value="0">aukeland sjukehusH</option>
+                <option value="1">Haukeland sjukehus</option>
+                <option value="2">Haukeland sjukehus med god plass</option>
             </select></label>
             <br>
             <label>Delvognskille
-            <select>
-                <option>[Vel]</option>
-                <option>Kvit</option>
-                <option>Grå</option>
+            <select id="joint">
+                <option value="-1">-</option>
+                <option value="0">Kvit</option>
+                <option value="1">Grå</option>
             </select></label>
             <br>
             <label>Utvida vognsett
-            <select>
-                <option>[Vel]</option>
-                <option>Var 5 før</option>
-                <option>Har alltid vore 7</option>
+            <select id="expanded">
+                <option value="-1">-</option>
+                <option value="0">Var 5 før</option>
+                <option value="1">Har alltid vore 7</option>
             </select></label>
             <br>
-            <button type="button", title="Funker ikkje endo">Trykk for forslag til favoritt</button><i>Funker ikkje endo!</i>
+            <button type="button">Bekreft</button>
         </fieldset>
     </form>
+    <div hidden id="hidden">
+        <p id="result">a</p>
+    </div>
 </body>
 </html>

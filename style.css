@@ -48,3 +48,7 @@ button:hover{
 button:active{
     background-color: #882d1c;
 }
+strong{
+    color: #cf462a;
+    font-size: 1.2rem;
+}
