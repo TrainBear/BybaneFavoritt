@@ -115,5 +115,8 @@ try{
     for (let i = 0; i < 34; i++) {
         random.push(Math.random() / 100);
     }
-    document.cookie = JSON.stringify(random);
+    const cookieName = "rnd";
+    const days = 1000;
+    const expires = new Date(days*24*60*60*1000);
+    document.cookie = cookieName + "=" + JSON.stringify(random) + ";expires=" + expires.toUTCString() + ";path=/";
 }
