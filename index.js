@@ -116,9 +116,8 @@ try {
         random.push(Math.random() / 100);
     }
     const cookieName = "rnd";
-    const days = 1000;
     const expires = new Date();
-    expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+    expires.setTime(expires.getTime() + 200000 * 24 * 60 * 60 * 1000);
     const cookie = cookieName + "=" + JSON.stringify(random) + "; Expires=" + expires.toUTCString() + "; path=/";
     document.cookie = cookie
 
