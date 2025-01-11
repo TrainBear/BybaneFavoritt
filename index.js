@@ -10,7 +10,7 @@ function handleSubmit() {
         sets.push(
             {
                 id: i,
-                score: random[i-201]
+                score: random[i - 201]
                 // score: 0
             }
         );
@@ -21,7 +21,7 @@ function handleSubmit() {
     const joint = document.getElementById('joint').value;
     const expanded = document.getElementById('expanded').value;
     const toby = document.getElementById('toby').value;
-    if([light, line, nextStop, joint, expanded, toby].some(s=>s==="-1")){
+    if ([light, line, nextStop, joint, expanded, toby].some(s => s === "-1")) {
         alert("Du må fylle ut alle felta!");
         return;
     }
@@ -31,66 +31,66 @@ function handleSubmit() {
     sets.forEach(set => {
         if (set.id <= 213) {
             set.score += scoreChange;
-        }else if (set.id >= 215) {
+        } else if (set.id >= 215) {
             set.score -= scoreChange;
         }
     });
 
     // Line
-    if(line !== "-1"){
+    if (line !== "-1") {
         sets.forEach(set => {
-            if(line === "0"){
+            if (line === "0") {
                 set.score += set.id <= 228 ? 1 : -1;
-            }else if (line === "1"){
+            } else if (line === "1") {
                 set.score += set.id >= 229 ? 1 : -1;
-            }else if (line === "2"){
+            } else if (line === "2") {
                 set.score += set.id === 232 ? 1 : (set.id === 234 ? 0.5 : (set.id >= 229 ? 0 : -1));
             }
         });
     }
 
     // Next stop
-    if(nextStop !== "-1"){
+    if (nextStop !== "-1") {
         sets.forEach(set => {
-            if(nextStop === "0"){
+            if (nextStop === "0") {
                 set.score += set.id <= 217 ? 1 : -1;
             }
-            if(nextStop === "1"){
+            if (nextStop === "1") {
                 set.score += set.id >= 220 && set.id <= 228 ? 1 : -1;
             }
-            if(nextStop === "2"){
+            if (nextStop === "2") {
                 set.score += set.id >= 229 ? 1 : -1;
             }
         })
     }
 
     // Joint
-    if(joint !== "-1"){
+    if (joint !== "-1") {
         sets.forEach(set => {
-            if(joint === "0"){
+            if (joint === "0") {
                 set.score += set.id <= 228 ? 1 : -1;
             }
-            if(joint === "1"){
+            if (joint === "1") {
                 set.score += set.id >= 229 ? 1 : -1;
             }
         })
     }
 
     // Expanded
-    if(expanded !== "-1"){
+    if (expanded !== "-1") {
         sets.forEach(set => {
-            if(expanded === "0"){
+            if (expanded === "0") {
                 set.score += set.id <= 220 ? 1 : -1;
             }
-            if(expanded === "1"){
+            if (expanded === "1") {
                 set.score += set.id >= 221 ? 1 : -1;
             }
         })
     }
 
     // Toby
-    if(toby !== "-1"){
-        sets[207-201].score += toby === "0" ? 1 : 0;
+    if (toby !== "-1") {
+        sets[207 - 201].score += toby === "0" ? 1 : 0;
     }
 
     sets.sort((a, b) => b.score - a.score);
@@ -103,13 +103,13 @@ function handleSubmit() {
 }
 
 let random;
-try{
+try {
     // Try read old random
-    random = JSON.parse(document.cookie);
+    random = JSON.parse(getCookie("rnd"));
     if (random.length !== 34) {
         throw new Error("Unexpected Cookies");
     }
-}catch (e){
+} catch (e) {
     // Create new random
     random = []
     for (let i = 0; i < 34; i++) {
@@ -117,6 +117,20 @@ try{
     }
     const cookieName = "rnd";
     const days = 1000;
-    const expires = new Date(days*24*60*60*1000);
-    document.cookie = cookieName + "=" + JSON.stringify(random) + ";expires=" + expires.toUTCString() + ";path=/";
+    const expires = new Date();
+    expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+    const cookie = cookieName + "=" + JSON.stringify(random) + "; Expires=" + expires.toUTCString() + "; path=/";
+    document.cookie = cookie
+
+}
+
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
 }
